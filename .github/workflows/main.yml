@@ -34,7 +34,9 @@ jobs:
         IMAGE_TAG: latest
       run: |
         # Build a docker container and push it to ECR 
-        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+        docker build -t online-back .
         echo "Pushing image to ECR..."
-        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+        docker tag online-back:latest 253964165293.dkr.ecr.us-east-1.amazonaws.com/online-back:latest
+        docker push 253964165293.dkr.ecr.us-east-1.amazonaws.com/online-back:latest
         echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
+
