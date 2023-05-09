@@ -6,25 +6,25 @@ services:
     build: .
     ports:
       - '3333:3333'
-    environment:
-      - DB_TYPE=postgres
-      - DB_USERNAME=postgres
-      - DB_PASSWORD=1111
-      - DB_NAME=car_place
-      - DB_PORT=5432
-      - DB_HOST=db
-    depends_on:
-      - db
-  db:
-    container_name: car-place-db
-    image: postgres:12
-    environment:
-      DB_USERNAME: postgres
-      DB_PASSWORD: 1111
-      DB_NAME: car_place
-    ports:
-      - '5432:5432'
-    volumes:
-      - pgdata:/var/lib/postgresql/data
-volumes:
-  pgdata: {}
+#    environment:
+#      - DB_TYPE=postgres
+#      - DB_USERNAME=postgres
+#      - DB_PASSWORD=1111
+#      - DB_NAME=car_place
+#      - DB_PORT=5432
+#      - DB_HOST=db
+#    depends_on:
+#      - db
+#  db:
+#    container_name: car-place-db
+#    image: postgres:12
+#    environment:
+#      DB_USERNAME: postgres
+#      DB_PASSWORD: 1111
+#      DB_NAME: car_place
+#    ports:
+#      - '5432:5432'
+#    volumes:
+#      - pgdata:/var/lib/postgresql/data
+#volumes:
+#  pgdata: {}
