@@ -30,9 +30,8 @@ jobs:
     - name: Build, tag, and push image to Amazon ECR
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        ECR_REPOSITORY: online-garazh
+        ECR_REPOSITORY: public.ecr.aws/s7h4d8l7/online-garazh:latest
         IMAGE_TAG: sample_image
       run: |
-        docker build -t online-garazh .
-        docker tag online-garazh:latest public.ecr.aws/s7h4d8l7/online-garazh:latest
-        docker push public.ecr.aws/s7h4d8l7/online-garazh:latest
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
