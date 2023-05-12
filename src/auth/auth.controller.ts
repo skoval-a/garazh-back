@@ -12,6 +12,7 @@ export class AuthController {
   @Post('/signup/')
   @ApiOperation({ summary: 'Register user' })
   private register(@Body() body: AuthenticateDto): Promise<HttpException> {
+    console.log('TEST', body);
     return this.service.register(body);
   }
 
