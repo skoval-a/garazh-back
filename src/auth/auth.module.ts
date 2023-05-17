@@ -12,7 +12,7 @@ import { JwtStrategy } from './auth.strategy';
 
 @Module({
   imports: [
-    UsersModule,
+    TypeOrmModule.forFeature([UserEntity]),
     PassportModule.register({ defaultStrategy: 'jwt', property: 'user' }),
     JwtModule.registerAsync({
       inject: [ConfigService],
@@ -21,7 +21,7 @@ import { JwtStrategy } from './auth.strategy';
         signOptions: { expiresIn: config.get('JWT_EXPIRES') },
       }),
     }),
-    TypeOrmModule.forFeature([UserEntity]),
+    UsersModule,
   ],
   controllers: [AuthController],
   providers: [AuthService, AuthHelper, JwtStrategy],

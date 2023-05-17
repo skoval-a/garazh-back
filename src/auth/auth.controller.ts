@@ -1,26 +1,28 @@
-import { Body, Controller, HttpException, Inject, Post } from '@nestjs/common';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
-import { AuthenticateDto } from './dto/authenticate.dto';
-import { AuthService } from './auth.service';
+import { Body, Controller, HttpException, Inject, Post } from "@nestjs/common";
+import { ApiOperation, ApiTags } from "@nestjs/swagger";
+import { AuthenticateDto } from "./dto/authenticate.dto";
+import { AuthService } from "./auth.service";
 
-@ApiTags('Auth')
-@Controller('auth')
+@ApiTags("Auth")
+@Controller("auth")
 export class AuthController {
   @Inject(AuthService)
   private readonly service: AuthService;
 
-  @Post('/signup/')
-  @ApiOperation({ summary: 'Register user' })
-  private register(@Body() body: AuthenticateDto): Promise<HttpException> {
-    console.log('TEST', body);
-    return this.service.register(body);
+  @Post("/login/")
+  @ApiOperation({ summary: "Login user" })
+  login(@Body() body: AuthenticateDto) {
+    console.log("TEST LOGIN", body);
+    return this.service.login(body);
   }
 
-  @Post('login')
-  @ApiOperation({ summary: 'Login user' })
-  private login(
-    @Body() body: AuthenticateDto,
-  ): Promise<HttpException> | Promise<{ access_token: string }> {
-    return this.service.login(body);
+  @Post("/signup/")
+  @ApiOperation({ summary: "Register user" })
+  async register(@Body() body: AuthenticateDto) {
+
+
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
+    return this.service.register(body);
   }
 }

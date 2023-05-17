@@ -8,7 +8,8 @@ import {
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { UserEntity } from './user.entity';
-import { JwtAuthGuard } from '../auth/auth.guard';
+import { JwtAuthGuard } from "../auth/auth.guard";
+// import { JwtAuthGuard } from '../auth/auth.guard';
 
 export type RequestWithUser = Request & { user: UserEntity };
 
