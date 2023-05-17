@@ -6,6 +6,7 @@ import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module';
 import { UserEntity } from './users/user.entity';
 import * as process from "process";
+import * as fs from 'fs';
 
 @Module({
   imports: [
@@ -33,6 +34,9 @@ import * as process from "process";
       synchronize: false,
       autoLoadEntities: true,
       migrationsRun: true,
+      ssl: {
+        ca: fs.readFileSync(process.env.SSL_CA_CERTIFICATES),
+      },
     }),
     AuthModule,
   ],
