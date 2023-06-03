@@ -31,7 +31,7 @@ import * as fs from 'fs';
       password: "_2dfd5e599eae11cdce4101fccef093",
       database: "_f60fd0d7451f",
       entities: [UserEntity],
-      synchronize: false,
+      synchronize: true,
       autoLoadEntities: true,
       migrationsRun: true,
       ssl: {
