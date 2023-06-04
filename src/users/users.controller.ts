@@ -6,7 +6,7 @@ import {
   UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiForbiddenResponse, ApiOkResponse, ApiOperation, ApiTags } from "@nestjs/swagger";
 import { UserEntity } from './user.entity';
 import { JwtAuthGuard } from "../auth/auth.guard";
 // import { JwtAuthGuard } from '../auth/auth.guard';
@@ -21,9 +21,11 @@ export class UsersController {
     console.log('USERS CONTROLER');
   }
 
+
   @Get('profile')
   @UseInterceptors(ClassSerializerInterceptor)
   @UseGuards(JwtAuthGuard)
+  @ApiOkResponse({ type: UserEntity })
   private getProfile(@Req() req: RequestWithUser): UserEntity {
     return req.user;
   }

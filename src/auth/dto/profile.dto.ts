@@ -4,7 +4,15 @@ import { ApiProperty } from '@nestjs/swagger';
 export class ProfileDto {
   @ApiProperty()
   @IsString()
-  user_name: string;
+  firstName: string;
+
+  @ApiProperty()
+  @IsString()
+  lastName: string;
+
+  @ApiProperty()
+  @IsString()
+  nickName: string;
 
   @IsEmail()
   email: string;
