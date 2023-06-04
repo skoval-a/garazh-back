@@ -18,19 +18,19 @@ export class UserEntity extends BaseEntity {
   id: number;
 
   @ApiProperty()
-  @Column({ unique: true })
+  @Column()
   email: string;
 
   @ApiProperty()
-  @Column({ nullable: true })
+  @Column()
   firstName: string;
 
   @ApiProperty()
-  @Column({ nullable: true })
+  @Column()
   lastName: string;
 
   @ApiProperty()
-  @Column({ nullable: true })
+  @Column()
   nickName: string;
 
   @Column()

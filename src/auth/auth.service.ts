@@ -6,6 +6,7 @@ import { UsersService } from "../users/users.service";
 import { AuthHelper } from "./auth.helper";
 import { Repository } from "typeorm";
 import { InjectRepository } from "@nestjs/typeorm";
+import { SignUpDto } from "./dto/signup.dto";
 
 @Injectable()
 export class AuthService {
@@ -43,8 +44,8 @@ export class AuthService {
     return { access_token: this.authHelper.generateToken(user) };
   }
 
-  async register(body: AuthenticateDto): Promise<HttpException> {
-    const { email, password }: AuthenticateDto = body;
+  async register(body: SignUpDto): Promise<HttpException> {
+    const { email, password, firstName, lastName }: SignUpDto = body;
     let user: UserEntity = await this.usersService.findUserByEmail(email);
 
     if (user) {
@@ -57,6 +58,8 @@ export class AuthService {
     user = new UserEntity();
 
     user.email = email;
+    user.firstName = firstName;
+    user.lastName = lastName;
     user.password = this.authHelper.encodePassword(password);
 
     await this.repository.save(user);
