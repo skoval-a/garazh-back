@@ -4,6 +4,7 @@ import { ApiProperty } from '@nestjs/swagger';
 export class ProfileDto {
   @ApiProperty()
   @IsString()
+
   firstName: string;
 
   @ApiProperty()
