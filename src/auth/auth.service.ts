@@ -45,7 +45,7 @@ export class AuthService {
   }
 
   async register(body: SignUpDto): Promise<HttpException> {
-    const { email, password, firstName, lastName }: SignUpDto = body;
+    const { email, password, firstName, lastName, nickName }: SignUpDto = body;
     let user: UserEntity = await this.usersService.findUserByEmail(email);
 
     if (user) {
@@ -60,6 +60,7 @@ export class AuthService {
     user.email = email;
     user.firstName = firstName;
     user.lastName = lastName;
+    user.nickName = nickName;
     user.password = this.authHelper.encodePassword(password);
 
     await this.repository.save(user);

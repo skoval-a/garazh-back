@@ -36,6 +36,7 @@ export class UsersController {
   @UseGuards(JwtAuthGuard)
   @ApiOkResponse({ type: UserEntity })
   private getProfile(@Req() req: RequestWithUser) {
+
     return {...req.user, avatar:req.user.avatar || '',  firstName: req.user.firstName || '', lastName: req.user.lastName || '', nickName: req.user.nickName || ''};
   }
 
