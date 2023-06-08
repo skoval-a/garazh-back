@@ -11,4 +11,13 @@ export class UsersService {
   async findUserByEmail(email: string): Promise<UserEntity> {
     return await this.repository.findOne({ where: { email } });
   }
+
+
+  async verifyNicknameAvailability(nickName: string) {
+
+    const hasUser = await this.repository.findOne({ where: { nickName } });
+
+      return {isExisting: !!hasUser}
+  }
+
 }

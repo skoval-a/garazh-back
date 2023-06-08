@@ -11,6 +11,18 @@ import * as fs from 'fs';
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
+    // TypeOrmModule.forRoot({
+    //   type: 'postgres',
+    //   host: 'localhost',
+    //   port: parseInt(process.env.PORT) || 5432,
+    //   username: process.env.DB_USERNAME ,
+    //   password: process.env.DB_PASSWORD,
+    //   database: process.env.DB_NAME,
+    //   entities: [UserEntity],
+    //   synchronize: true,
+    //   autoLoadEntities: true,
+    //   migrationsRun: true,
+    // }),
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'primary.db-garazh--y2rj87zmcyys.addon.code.run',
