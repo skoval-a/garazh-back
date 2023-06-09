@@ -24,6 +24,7 @@ export class AuthService {
   async login(body: AuthenticateDto): Promise<{ access_token: string }> {
     const { email, password }: AuthenticateDto = body;
 
+    console.log('@@@@@@@@', email, password);
     const user: UserEntity = await this.usersService.findUserByEmail(email);
 
 
