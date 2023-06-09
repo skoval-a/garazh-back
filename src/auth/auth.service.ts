@@ -26,16 +26,17 @@ export class AuthService {
 
     const user: UserEntity = await this.usersService.findUserByEmail(email);
 
-    console.log("LOGIN", user);
 
     if (!user) {
       throw new HttpException("No user found", HttpStatus.NOT_FOUND);
     }
 
-    const isPasswordValid = this.authHelper.isPasswordValid(
+
+    const isPasswordValid = await this.authHelper.isPasswordValid(
       password,
       user.password
     );
+
 
     if (!isPasswordValid) {
       throw new HttpException("No user found", HttpStatus.NOT_FOUND);
@@ -55,13 +56,16 @@ export class AuthService {
       );
     }
 
+    const decodedPassword = await this.authHelper.encodePassword(password);
+
+
     user = new UserEntity();
 
     user.email = email;
     user.firstName = firstName;
     user.lastName = lastName;
     user.nickName = nickName;
-    user.password = this.authHelper.encodePassword(password);
+    user.password = decodedPassword
 
     await this.repository.save(user);
 

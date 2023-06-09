@@ -8,17 +8,19 @@ export class AuthHelper {
   @Inject(JwtService)
   private readonly jwt: JwtService;
 
-  public encodePassword(password: string): string {
+  public async  encodePassword(password: string) {
     const salt: string = bcrypt.genSaltSync(10);
 
-    return bcrypt.hashSync(password, salt);
+    return  bcrypt.hashSync(password, salt);
+
   }
 
   public async isPasswordValid(
     password: string,
     encodedPassword: string,
   ): Promise<boolean> {
-    return bcrypt.compareSync(password, encodedPassword);
+
+    return await bcrypt.compareSync(password, encodedPassword);
   }
 
   public generateToken(user: UserEntity): string {
