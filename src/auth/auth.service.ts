@@ -28,7 +28,7 @@ export class AuthService {
 
 
     if (!user) {
-      throw new HttpException("No user found", HttpStatus.NOT_FOUND);
+      throw new HttpException("No user found", HttpStatus.BAD_REQUEST);
     }
 
 
@@ -39,7 +39,7 @@ export class AuthService {
 
 
     if (!isPasswordValid) {
-      throw new HttpException("No user found", HttpStatus.NOT_FOUND);
+      throw new HttpException("No user found", HttpStatus.BAD_REQUEST);
     }
 
     return { access_token: this.authHelper.generateToken(user) };
