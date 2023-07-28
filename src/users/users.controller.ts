@@ -30,16 +30,13 @@ export class UsersController {
     console.log('USERS CONTROLER');
   }
 
-
   @Get('profile')
   @UseInterceptors(ClassSerializerInterceptor)
   @UseGuards(JwtAuthGuard)
   @ApiOkResponse({ type: UserEntity })
   private getProfile(@Req() req: RequestWithUser) {
-
     return {...req.user, avatar:req.user.avatar || '',  firstName: req.user.firstName || '', lastName: req.user.lastName || '', nickName: req.user.nickName || ''};
   }
-
 
   @Post('verifyNicknameAvailability')
   @ApiOkResponse({ description: 'Returns the availability status of the nickname', schema: {
