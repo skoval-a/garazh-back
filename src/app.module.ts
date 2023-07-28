@@ -5,12 +5,22 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module';
 import { UserEntity } from './users/user.entity';
-// import * as process from "process";
+import * as process from "process";
 // import * as fs from 'fs';
 
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
+    TypeOrmModule.forRoot({
+      url: process.env.DATABASE_URL,
+      type: 'postgres',
+      ssl: {
+        rejectUnauthorized: false,
+      },
+      entities: ['dist/**/*.entity{.ts,.js}'],
+      synchronize: true, // This for development
+      autoLoadEntities: true,
+    }),
     // TypeOrmModule.forRoot({
     //   type: 'postgres',
     //   host: 'localhost',
