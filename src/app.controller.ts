@@ -16,24 +16,24 @@ export class AppController {
   }
 
 
-  // @Get('countries/')
-  // @ApiOkResponse()
-  // getAllCountries(): any[] {
-  //   return COUNTRIES;
-  // }
-  //
-  // @Get('getCitiesByCountry/:country')
-  // @ApiOkResponse()
-  // getCitiesByCountry(@Param('country') countryParam: string) {
-  //
-  //   if (All_CITIES_BY_COUNTRY[countryParam]) {
-  //     return All_CITIES_BY_COUNTRY[countryParam];
-  //
-  //   } else {
-  //     throw new HttpException(
-  //       "Такоі краіни не існує",
-  //       HttpStatus.BAD_REQUEST
-  //     );
-  //   }
-  // }
+  @Get('countries/')
+  @ApiOkResponse()
+  getAllCountries(): any[] {
+    return COUNTRIES;
+  }
+
+  @Get('getCitiesByCountry/:country')
+  @ApiOkResponse()
+  getCitiesByCountry(@Param('country') countryParam: string) {
+
+    if (All_CITIES_BY_COUNTRY[countryParam]) {
+      return All_CITIES_BY_COUNTRY[countryParam];
+
+    } else {
+      throw new HttpException(
+        "Такоі краіни не існує",
+        HttpStatus.BAD_REQUEST
+      );
+    }
+  }
 }

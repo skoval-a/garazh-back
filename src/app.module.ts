@@ -48,7 +48,7 @@ import * as process from "process";
     //     ca: fs.readFileSync(process.env.SSL_CA_CERTIFICATES),
     //   },
     // }),
-    // AuthModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
