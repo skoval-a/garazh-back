@@ -11,28 +11,28 @@ import * as process from "process";
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
-    // TypeOrmModule.forRoot({
-    //   url: process.env.DATABASE_URL,
-    //   type: 'postgres',
-    //   ssl: {
-    //     rejectUnauthorized: false,
-    //   },
-    //   entities: ['dist/**/*.entity{.ts,.js}'],
-    //   synchronize: true, // This for development
-    //   autoLoadEntities: true,
-    // }),
     TypeOrmModule.forRoot({
+      url: process.env.DATABASE_URL,
       type: 'postgres',
-      host: 'localhost',
-      port: parseInt(process.env.PORT) || 5432,
-      username: process.env.DB_USERNAME ,
-      password: process.env.DB_PASSWORD,
-      database: process.env.DB_NAME,
-      entities: [UserEntity],
-      synchronize: true,
+      ssl: {
+        rejectUnauthorized: false,
+      },
+      entities: ['dist/**/*.entity{.ts,.js}'],
+      synchronize: true, // This for development
       autoLoadEntities: true,
-      migrationsRun: true,
     }),
+    // TypeOrmModule.forRoot({
+    //   type: 'postgres',
+    //   host: 'localhost',
+    //   port: parseInt(process.env.PORT) || 5432,
+    //   username: process.env.DB_USERNAME ,
+    //   password: process.env.DB_PASSWORD,
+    //   database: process.env.DB_NAME,
+    //   entities: [UserEntity],
+    //   synchronize: true,
+    //   autoLoadEntities: true,
+    //   migrationsRun: true,
+    // }),
     // TypeOrmModule.forRoot({
     //   type: 'postgres',
     //   host: 'primary.db-garazh--y2rj87zmcyys.addon.code.run',
