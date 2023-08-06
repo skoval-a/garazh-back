@@ -16,11 +16,11 @@ export class updateProfileDto {
   @ApiProperty()
 
   @IsString()
-  country: string;
+  countryId: number;
   @ApiProperty()
 
   @IsString()
-  city: string;
+  cityId: number;
   @ApiProperty()
 
   @IsString()
