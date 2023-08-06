@@ -9,23 +9,24 @@ export class updateProfileDto {
   @ApiProperty()
   @IsString()
   lastName: string;
-  @ApiProperty()
 
+  @ApiProperty()
   @IsString()
   phoneNumber: string;
-  @ApiProperty()
 
+  @ApiProperty()
   @IsString()
   countryId: number;
-  @ApiProperty()
 
+  @ApiProperty()
   @IsString()
   cityId: number;
-  @ApiProperty()
 
+  @ApiProperty()
   @IsString()
   description: string;
 
   @IsString()
+  @ApiProperty()
   avatar: string;
 }
