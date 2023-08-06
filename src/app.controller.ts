@@ -1,10 +1,8 @@
-import { Body, Controller, Get, HttpException, HttpStatus, Param } from "@nestjs/common";
+import { Controller, Get, HttpException, HttpStatus, Param } from "@nestjs/common";
 import { AppService } from './app.service';
 import { ApiOkResponse } from "@nestjs/swagger";
-import { UserEntity } from "./users/user.entity";
-import { Country, State, City }  from 'country-state-city';
+
 import { All_CITIES_BY_COUNTRY, COUNTRIES } from "./constants/countries";
-import { AuthenticateDto } from "./auth/dto/authenticate.dto";
 
 @Controller()
 export class AppController {

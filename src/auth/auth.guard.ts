@@ -6,6 +6,9 @@ export class JwtAuthGuard extends AuthGuard('jwt') implements IAuthGuard {
   public async canActivate(context: ExecutionContext): Promise<boolean> {
     await super.canActivate(context);
 
-    return !!context.switchToHttp().getRequest().user;
+    console.log('context.switchToHttp().getRequest().user',context.switchToHttp().getRequest().user);
+
+
+    return context.switchToHttp().getRequest().user;
   }
 }

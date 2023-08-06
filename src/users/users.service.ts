@@ -1,7 +1,7 @@
-import { Injectable } from '@nestjs/common';
-import { UserEntity } from './user.entity';
-import { Repository } from 'typeorm';
-import { InjectRepository } from '@nestjs/typeorm';
+import { Injectable } from "@nestjs/common";
+import { UserEntity } from "./user.entity";
+import { Repository } from "typeorm";
+import { InjectRepository } from "@nestjs/typeorm";
 
 @Injectable()
 export class UsersService {
@@ -12,12 +12,15 @@ export class UsersService {
     return await this.repository.findOne({ where: { email } });
   }
 
-
   async verifyNicknameAvailability(nickName: string) {
-
     const hasUser = await this.repository.findOne({ where: { nickName } });
 
-      return {isExisting: !!hasUser}
+    return { isExisting: !!hasUser };
   }
 
+  async updateProfile(id: number, body: any) {
+    const user = await this.repository.findOne({ where: { id } });
+
+    return await this.repository.save({ ...user, ...body });
+  }
 }
