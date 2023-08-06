@@ -47,11 +47,11 @@ export class UserEntity extends BaseEntity {
 
   @ApiProperty()
   @Column({nullable: true})
-  cityId: string;
+  cityId: number;
 
   @ApiProperty()
   @Column({nullable: true})
-  countryId: string;
+  countryId: number;
 
   @ApiProperty()
   @Column({nullable: true})
