@@ -6,7 +6,7 @@ import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module';
 import { UserEntity } from './users/user.entity';
 import * as process from "process";
-// import * as fs from 'fs';
+import * as fs from 'fs';
 
 @Module({
   imports: [
