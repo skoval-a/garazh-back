@@ -44,9 +44,9 @@ import * as fs from 'fs';
       synchronize: true,
       autoLoadEntities: true,
       migrationsRun: true,
-      // ssl: {
-      //   ca: fs.readFileSync(process.env.SSL_CA_CERTIFICATES),
-      // },
+      ssl: {
+        ca: fs.readFileSync(process.env.SSL_CA_CERTIFICATES),
+      },
     }),
     AuthModule,
   ],
