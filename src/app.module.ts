@@ -11,16 +11,16 @@ import * as process from "process";
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
-    TypeOrmModule.forRoot({
-      url: process.env.DATABASE_URL,
-      type: 'postgres',
-      ssl: {
-        rejectUnauthorized: false,
-      },
-      entities: ['dist/**/*.entity{.ts,.js}'],
-      synchronize: true, // This for development
-      autoLoadEntities: true,
-    }),
+    // TypeOrmModule.forRoot({
+    //   url: process.env.DATABASE_URL,
+    //   type: 'postgres',
+    //   ssl: {
+    //     rejectUnauthorized: false,
+    //   },
+    //   entities: ['dist/**/*.entity{.ts,.js}'],
+    //   synchronize: true, // This for development
+    //   autoLoadEntities: true,
+    // }),
     // TypeOrmModule.forRoot({
     //   type: 'postgres',
     //   host: 'localhost',
@@ -33,21 +33,21 @@ import * as process from "process";
     //   autoLoadEntities: true,
     //   migrationsRun: true,
     // }),
-    // TypeOrmModule.forRoot({
-    //   type: 'postgres',
-    //   host: 'primary.db-garazh--y2rj87zmcyys.addon.code.run',
-    //   port: 5432,
-    //   username:'_17a53df390b0ba1e',
-    //   password: "_2dfd5e599eae11cdce4101fccef093",
-    //   database: "_f60fd0d7451f",
-    //   entities: [UserEntity],
-    //   synchronize: true,
-    //   autoLoadEntities: true,
-    //   migrationsRun: true,
-    //   ssl: {
-    //     ca: fs.readFileSync(process.env.SSL_CA_CERTIFICATES),
-    //   },
-    // }),
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      host: 'ec2-34-241-82-91.eu-west-1.compute.amazonaws.com',
+      port: 5432,
+      username:'xqcsbyaolshmct',
+      password: "e4aa94556cd362eeb4ad681598c4d6de87acc5e83a3ce88d34abdf0d9b2310ba",
+      database: "dav6i2nv8o0ou0",
+      entities: [UserEntity],
+      synchronize: true,
+      autoLoadEntities: true,
+      migrationsRun: true,
+      ssl: {
+        ca: fs.readFileSync(process.env.SSL_CA_CERTIFICATES),
+      },
+    }),
     AuthModule,
   ],
   controllers: [AppController],
